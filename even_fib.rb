@@ -1,15 +1,19 @@
 class EvenFib
+  FIB_NUM_UNDER_THRESHOLD = 33
+
   def call
-    (1..33).reduce(0) do |sum, num|
-      result = fib num 
-      if result % 2 == 0
-        sum+=result
-      end
-      sum
-    end
+    fib_summation
   end
 
   private
+
+  def fib_summation
+    (1..FIB_NUM_UNDER_THRESHOLD).reduce(0) do |sum, num|
+      result = fib num 
+      sum+=result if result % 2 == 0
+      sum
+    end
+  end
 
   def fib(num)
     if num == 0 || num == 1
